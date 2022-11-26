@@ -5,6 +5,8 @@
 <? $this->section("content") ?>
    <h1>Tasks</h1>
 
+   <a href="<?= site_url("/tasks/new/") ?>">Add Task</a>
+
    <ul>
       <?php foreach($tasks as $task): ?>
          <li>
