@@ -32,7 +32,7 @@ class CreateUser extends Migration
                 'null'              => true,
                 'default'           => null
             ],
-            'updated)at' => [
+            'updated_at' => [
                 'type'              => 'DATETIME',
                 'null'              => true,
                 'default'           => null
