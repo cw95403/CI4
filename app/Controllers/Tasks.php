@@ -26,7 +26,9 @@ class Tasks extends BaseController
 	
 	public function new()
 	{
-		return view('Tasks/new');
+		return view('Tasks/new', [
+            'task'=> ['description' =>'']
+        ]);
 	}
 	
 	public function create()
