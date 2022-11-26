@@ -1,6 +1,6 @@
+<?= $this->extend("layouts/default") ?>
 
-   <?= $this->include("header") ?>
-   
+
+<? $this->section("content") ?>
    <h1>Welcome Home!</h1>
-
-   <?= $this->include("footer") ?>
+<? $this->endSection() ?>

@@ -1,8 +1,6 @@
+<?= $this->extend("layouts/default") ?>
 
-   <?= $this->include("header") ?>
-   
+
+<? $this->section("content") ?>
    <h1>Tasks</h1>
-
-   <?= $this->include("footer") ?>
-
-    
+<? $this->endSection() ?>
