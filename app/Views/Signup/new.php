@@ -13,7 +13,7 @@
       </ul>
    <?php endif; ?>
 
-   <a href="<?= site_url("/Signup") ?>">&laquo; back to index</a>
+   <a href="<?= site_url("/") ?>">&laquo; back to index</a>
    
    <?= form_open("/signup/create") ?>
 
