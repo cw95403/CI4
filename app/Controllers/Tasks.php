@@ -22,6 +22,7 @@ class Tasks extends BaseController
             'task' => $task
         ]);
 	}
+
 	
 	public function new()
 	{
@@ -48,6 +49,17 @@ class Tasks extends BaseController
                                 ->with('info','Task created successfully');
 			
 		}
+	}
+
+    public function edit($id)
+    {
+        $model = new \App\Models\TaskModel;
+		
+        $task = $model->find($id);
+		
+		return view('Tasks/edit', [
+            'task' => $task
+        ]);
 	}
 }
 
