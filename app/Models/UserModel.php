@@ -28,16 +28,20 @@ class UserModel extends \CodeIgniter\Model
     }
 
     protected $validationRules = [
-        'name'  =>  'required',
-        'email' =>  'required'
+        'name'                  =>  'required',
+        'email'                 =>  'required|valid_email|is_unique[user.email]',
+        'password'              =>  'required|min_length[6]',
+        'password_confirmation' =>  'required|matches[password]'
     ];
-    
+
     protected $validationMessages = [
-        'name' => [
-            'required' => 'Please enter a name'
+        'email'     => [
+            'is_unique' =>  'That email address is taken'
         ],
-        'email' => [
-            'required' => 'Please enter an email'
+        'password_confirmation' =>  [
+            'required'  =>  'Please confirm the password',
+            'matches'   =>  'Please enter the same password again'
         ]
-    ];
+        ];
+    
 }
