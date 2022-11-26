@@ -46,7 +46,8 @@ class Tasks extends BaseController
         } else {
 		
 			return redirect()   ->to("/tasks/show/$result")
-                                ->with('info','Task created successfully');
+                                ->with('info','Task created successfully')
+                                ->withInput();
 			
 		}
 	}
@@ -66,12 +67,21 @@ class Tasks extends BaseController
     {
         $model = new \App\Models\TaskModel;
 		
-        $task = $model->update($id, [
+        $result = $model->update($id, [
             'description' => $this->request->getPost('description')
         ]);
 		
-		return redirect()   ->to("/tasks/show/$id")
-                            ->with('info','Task updated successfully');
+		if ($result) {
+            return redirect()   ->to("/tasks/show/$id")
+                                ->with('info','Task updated successfully');
+
+        } else {
+            return redirect()   ->back()
+                                ->with('errors', $model->errors())
+                                ->with('warning', 'Invalid data')
+                                ->withInput();
+        }
+
 	}
 }
 
