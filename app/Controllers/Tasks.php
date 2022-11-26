@@ -61,6 +61,18 @@ class Tasks extends BaseController
             'task' => $task
         ]);
 	}
+
+    public function update($id)
+    {
+        $model = new \App\Models\TaskModel;
+		
+        $task = $model->update($id, [
+            'description' => $this->request->getPost('description')
+        ]);
+		
+		return redirect()   ->to("/tasks/show/$id")
+                            ->with('info','Task updated successfully');
+	}
 }
 
 
