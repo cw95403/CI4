@@ -7,4 +7,5 @@
    <h1>Welcome Home!</h1>
 
    <a href="<?= site_url("/signup") ?>">Sign Up</a>
+   <a href="<?= site_url("/login") ?>">Login</a>
 <? $this->endSection() ?>
