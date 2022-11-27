@@ -27,6 +27,12 @@ class UserModel extends \CodeIgniter\Model
         return $data;
     }
 
+    public function findByEmail($email)
+    {
+        return  $this   ->where('email',$email)
+                        ->first();
+    }
+
     protected $validationRules = [
         'name'                  =>  'required',
         'email'                 =>  'required|valid_email|is_unique[user.email]',

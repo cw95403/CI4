@@ -8,14 +8,13 @@ class Authentication
     {
         $model = new \App\Models\UserModel;
 
-        $user =  $model ->where('email',$email)
-                        ->first();
+        $user = $model->findByEmail($email);
 
         if ($user === null) {
             return false;
         }
         
-        if(!password_verify($password, $user->password_hash)) {
+        if(! $user->verifyPassword($password)) {
            return false;
         }
 
