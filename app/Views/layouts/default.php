@@ -26,6 +26,12 @@
 
   <?php endif; ?>
 
+  <?php if (session()->has('error')): ?>
+    <div class="error">
+      <?= session('error') ?>
+    </div>
+  <?php endif; ?>
+
   <?php if (session()->has('warning')): ?>
     <div class="warning">
       <?= session('warning') ?>
