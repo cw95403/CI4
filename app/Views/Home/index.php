@@ -11,13 +11,15 @@
    <?php if(session()->has('user_id')): ?>
 
       <p>User is logged in</p>
+      <p>Hello <?= esc(current_user()->name) ?></p>
+
       <a href="<?= site_url("/logout") ?>">Logout</a>
 
    <?php else: ?>
 
       <p>User is not logged in</p>
       <a href="<?= site_url("/login") ?>">Login</a>
-      
+
    <?php endif; ?>
 
 <? $this->endSection() ?>
