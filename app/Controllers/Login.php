@@ -40,4 +40,16 @@ class Login extends BaseController
         }
     }
 
+    public function delete()
+    {
+        session()->destroy();
+        return redirect()->to('/login/showLogoutMessage');
+    }
+
+    public function showLogoutMessage()
+    {
+        return redirect()   ->to('/')
+        ->with('info','Logout successful');
+    }
+
 }
