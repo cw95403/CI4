@@ -25,7 +25,12 @@ class Login extends BaseController
                                 ->with('warning','User not found');
         } else {
             if(password_verify($password, $user->password_hash)) {
-                echo "Login OK";
+                $session = session();
+                $session->regenerate();
+                $session->set('user_id',$user->id);
+
+                return redirect()   ->to("/")
+                                    ->with('info','Login successful');
             } else {
 
             return redirect()   ->back()
