@@ -4,6 +4,8 @@ namespace App\Libraries;
 
 class Authentication
 {
+    private $user;
+
     public function login($email,$password)
     {
         $model = new \App\Models\UserModel;
@@ -36,8 +38,12 @@ class Authentication
             return null;
         }
 
-        $model = new \App\Models\UserModel;
+        if ($this->user === null) {
+            $model = new \App\Models\UserModel;
+            $this->user = $model->find(session()->get('user_id'));
+        }
+        
 
-        return $model->find(session()->get('user_id'));
+        return $this->user;
     }
 }
