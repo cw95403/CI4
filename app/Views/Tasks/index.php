@@ -7,13 +7,20 @@
 
    <a href="<?= site_url("/tasks/new/") ?>">Add Task</a>
 
-   <ul>
-      <?php foreach($tasks as $task): ?>
-         <li>
-            <a href="<?= site_url("/tasks/show/" . $task->id) ?>">
-               <?= esc($task->description) ?></a>
-         </li>
-      <?php endforeach; ?>
-   </ul>
+   <?php if ($tasks): ?>
+
+      <ul>
+         <?php foreach($tasks as $task): ?>
+            <li>
+               <a href="<?= site_url("/tasks/show/" . $task->id) ?>">
+                  <?= esc($task->description) ?></a>
+            </li>
+         <?php endforeach; ?>
+      </ul>
+
+   <?php else: ?>
+      <p>no tasks for user...</p>
+
+   <?php endif ?>
 
 <? $this->endSection() ?>

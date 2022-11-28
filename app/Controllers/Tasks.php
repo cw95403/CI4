@@ -14,7 +14,10 @@ class Tasks extends BaseController
     }
 	public function index()
 	{
-        $data = $this->model->findAll();
+        $auth = service('auth');
+        $user = $auth->getCurrentUser();
+
+        $data = $this->model->getTasksByUserId($user->id);
 		
 		return view("Tasks/index", ['tasks' => $data]);
 	}
