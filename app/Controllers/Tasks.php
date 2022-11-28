@@ -45,6 +45,10 @@ class Tasks extends BaseController
 	{
         $task = new Task($this->request->getPost());
 
+        $user = service('auth')->getCurrentUser();
+
+        $task->user_id = $user->id;
+
 		if ($this->model->insert($task)) {
 
             return redirect()   ->to("/tasks/show/{$this->model->insertID}")
@@ -73,7 +77,10 @@ class Tasks extends BaseController
     {
         $task = $this->getTaskOr404($id);
 
-        $task->fill($this->request->getPost()); 
+        $post = $this->request->getPost();
+        unset($post['user_id']);
+
+        $task->fill($post); 
 
         if (! $task->hasChanged()) {
             return redirect()   ->back()
