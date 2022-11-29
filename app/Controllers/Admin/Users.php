@@ -21,4 +21,24 @@ class Users extends \App\Controllers\BaseController
         ]);
     }
 
+    public function show($id)
+    {	
+        $user = $this->getUserOr404($id);
+
+		return view('Admin/Users/show', [
+            'user' => $user
+        ]);
+	}
+
+    private function getUserOr404($id) {
+
+        $user = $this->model->where('id',$id)
+                            ->first();
+
+        if ($user === null) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("User with ID $id not found");
+        }
+
+        return $user;
+    }
 }
