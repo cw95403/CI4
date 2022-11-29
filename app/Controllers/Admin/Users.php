@@ -69,6 +69,40 @@ class Users extends \App\Controllers\BaseController
         ]);
 	}
 
+    public function update($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        $post = $this->request->getPost();
+
+        if (empty($post['password'])) {
+            $this->model->disablePasswordValidation();
+
+            unset($post['password']);
+            unset($post['password_confirmati0on']);
+        }
+
+        $user->fill($post); 
+
+        if (! $user->hasChanged()) {
+            return redirect()   ->back()
+                                ->with('warning','Nothing to update')
+                                ->withInput();
+        }
+        if ($this->model->save($user))
+        {
+            return redirect()   ->to("/admin/users/show/$id")
+                                ->with('info','User updated successfully');
+
+        } else {
+            return redirect()   ->back()
+                                ->with('errors', $this->model->errors())
+                                ->with('warning', 'Invalid data')
+                                ->withInput();
+        }
+
+	}
+
     private function getUserOr404($id) {
 
         $user = $this->model->where('id',$id)
