@@ -25,6 +25,7 @@ class TaskModel extends \CodeIgniter\Model
     public function getTasksByUserId($id)
     {
         return $this->where('user_id', $id)
+                    ->orderBy('created_at')
                     ->findAll();
 
     }
