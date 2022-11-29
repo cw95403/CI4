@@ -32,18 +32,6 @@ class Users extends \App\Controllers\BaseController
         ]);
 	}
 
-    private function getUserOr404($id) {
-
-        $user = $this->model->where('id',$id)
-                            ->first();
-
-        if ($user === null) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("User with ID $id not found");
-        }
-
-        return $user;
-    }
-
     public function new()
 	{
 		$user = new User;
@@ -71,4 +59,25 @@ class Users extends \App\Controllers\BaseController
                                 ->withInput();
 		}
 	}
+
+    public function edit($id)
+    {
+        $user = $this->getUserOr404($id);
+
+		return view('Admin/Users/edit', [
+            'user' => $user
+        ]);
+	}
+
+    private function getUserOr404($id) {
+
+        $user = $this->model->where('id',$id)
+                            ->first();
+
+        if ($user === null) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("User with ID $id not found");
+        }
+
+        return $user;
+    }
 }

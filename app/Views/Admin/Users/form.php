@@ -1,11 +1,11 @@
 <div>
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" value="<?= old('name')?>">
+    <input type="text" name="name" id="name" value="<?= esc(old('name', $user->name))?>">
 </div>
 
 <div>
     <label for="email">Email</label>
-    <input type="text" name="email" id="email" value="<?= old('email')?>">
+    <input type="text" name="email" id="email" value="<?= esc(old('email', $user->email))?>">
 </div>
 
 <div>
