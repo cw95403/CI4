@@ -18,6 +18,8 @@
          <?php endforeach; ?>
       </ul>
 
+      <?= $pager->links() ?>
+
    <?php else: ?>
       <p>no tasks for user...</p>
 

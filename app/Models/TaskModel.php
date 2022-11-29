@@ -22,11 +22,11 @@ class TaskModel extends \CodeIgniter\Model
         ]
     ];
 
-    public function getTasksByUserId($id)
+    public function paginateTasksByUserId($id)
     {
         return $this->where('user_id', $id)
                     ->orderBy('created_at')
-                    ->findAll();
+                    ->paginate(5);
 
     }
 
