@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-class Task extends \CodeIgniter\Entity\Entity {
-
+class Task extends \CodeIgniter\Entity
+{
 }
-

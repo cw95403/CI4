@@ -1,26 +1,28 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-Tasks<? $this->endSection() ?>
+<?= $this->section('title') ?>Task<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Task</h1>
+<?= $this->section('content') ?>
 
-   <a href="<?= site_url("/tasks") ?>">&laquo; back to index</a>
-   <dl>
-      <dt>ID</dt>
-      <dd><?= $task->id ?></dd>
+<h1>Task</h1>
 
-      <dt>Description</dt>
-      <dd><?= esc($task->description) ?></dd>
+<a href="<?= site_url("/tasks") ?>">&laquo; back to index</a>
 
-      <dt>Created At</dt>
-      <dd><?= $task->created_at ?></dd>
+<dl>
+    <dt>ID</dt>
+    <dd><?= $task->id ?></dd>
+    
+    <dt>Description</dt>
+    <dd><?= esc($task->description) ?></dd>
+    
+    <dt>Created at</dt>
+    <dd><?= $task->created_at ?></dd>
+    
+    <dt>Updated at</dt>
+    <dd><?= $task->updated_at ?></dd>
+</dl>
 
-      <dt>Updated At</dt>
-      <dd><?= $task->updated_at ?></dd>
-   </dl>
+<a href="<?= site_url('/tasks/edit/' . $task->id) ?>">Edit</a>
+<a href="<?= site_url('/tasks/delete/' . $task->id) ?>">Delete</a>
 
-   <a href="<?= site_url('/tasks/edit/'.$task->id)?>">Edit</a>
-   <a href="<?= site_url('/tasks/delete/'.$task->id)?>">Delete</a>
-
-<? $this->endSection() ?>
+<?= $this->endSection() ?>

@@ -1,26 +1,18 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-Users<? $this->endSection() ?>
+<?= $this->section('title') ?>Delete user<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Delete User</h1>
+<?= $this->section('content') ?>
 
-   <p>Are you sure?</p>
+<h1>Delete user</h1>
 
-   <?php if(session()->has('errors')): ?>
-      <ul>
-         <?php foreach(session('errors') as $error): ?>
-            <li><?= $error ?></li>
-         <?php endforeach; ?>
-      </ul>
-   <?php endif; ?>
+<p>Are you sure?</p>
 
-   <a href="<?= site_url("/admin/users") ?>">&laquo; back to index</a>
-   
-   <?= form_open("/admin/users/delete/".$user->id) ?>
+<?= form_open("/admin/users/delete/" . $user->id) ?>
 
-      <button>Yes</button>
-      <a href="<?= site_url("/admin/users/show/".$user->id) ?>">Cancel</a>
-   </form>
+    <button>Yes</button>
+    <a href="<?= site_url('/admin/users/show/' . $user->id) ?>">Cancel</a>
+    
+</form>
 
-<? $this->endSection() ?>
+<?= $this->endSection() ?>

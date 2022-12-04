@@ -1,28 +1,26 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-User<? $this->endSection() ?>
+<?= $this->section('title') ?>New user<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>New User</h1>
+<?= $this->section('content') ?>
 
-   <?php if(session()->has('errors')): ?>
-      <ul>
-         <?php foreach(session('errors') as $error): ?>
+<h1>New user</h1>
+
+<?php if (session()->has('errors')): ?>
+    <ul>
+        <?php foreach(session('errors') as $error): ?>
             <li><?= $error ?></li>
-         <?php endforeach; ?>
-      </ul>
-   <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php endif ?>
 
-   <a href="<?= site_url("/admin/users") ?>">&laquo; back to index</a>
-   
-   <?= form_open("/admin/users/create") ?>
+<?= form_open("/admin/users/create") ?>
 
-      <?= $this->include('Admin/Users/form')?>
+    <?= $this->include('Admin/Users/form') ?>
+    
+    <button>Save</button>
+    <a href="<?= site_url("/admin/users") ?>">Cancel</a>
 
-      <button>Save</button>
-      <a href="<?= site_url("/admin/users") ?>">Cancel</a>
-   </form>
+</form>
 
-
-
-<? $this->endSection() ?>
+<?= $this->endSection() ?>

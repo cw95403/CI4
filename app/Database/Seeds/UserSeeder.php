@@ -1,26 +1,25 @@
-<?php
-
-namespace App\Database\Seeds;
+<?php namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    public function run()
-    {
+	public function run()
+	{
         $model = new \App\Models\UserModel;
-        
+		
         $data = [
-            'name'      =>  'Admin',
-            'email'     =>  'admin@example.com',
-            'password'  =>  '123123',
-            'is_admin'  =>   true
-        ];
-        
+			'name'     => 'Admin',
+			'email'    => 'admin@example.com',
+			'password' => 'secret',
+			'is_admin' => true,
+			'is_active' => true
+		];
+		
         $model->skipValidation(true)
-                ->protect(false)
-                ->insert($data);
-
+              ->protect(false)
+			  ->insert($data);
+		
         dd($model->errors());
-    }
+	}
 }

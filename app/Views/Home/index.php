@@ -1,9 +1,11 @@
 <?= $this->extend("layouts/default") ?>
 
+<?= $this->section("title") ?>Home<?= $this->endSection() ?>
 
+<?= $this->section("content") ?>
 
-<? $this->section("title") ?>TaskApp-Home<? $this->endSection() ?>
-<? $this->section("content") ?>
-   <h1>Welcome Home!</h1>
+    <h1>Welcome</h1>
 
-<? $this->endSection() ?>
+    
+
+<?= $this->endSection() ?>

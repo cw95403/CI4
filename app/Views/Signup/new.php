@@ -1,46 +1,44 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-Signup<? $this->endSection() ?>
+<?= $this->section('title') ?>Signup<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Sign Up</h1>
+<?= $this->section('content') ?>
 
-   <?php if(session()->has('errors')): ?>
-      <ul>
-         <?php foreach(session('errors') as $error): ?>
+<h1>Signup</h1>
+
+<?php if (session()->has('errors')): ?>
+    <ul>
+        <?php foreach(session('errors') as $error): ?>
             <li><?= $error ?></li>
-         <?php endforeach; ?>
-      </ul>
-   <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php endif ?>
 
-   <a href="<?= site_url("/") ?>">&laquo; back to index</a>
-   
-   <?= form_open("/signup/create") ?>
+<?= form_open("/signup/create") ?>
 
-      <div>
-         <label for="name">Name</label>
-         <input type="text" name="name" id="name" value="<?= old('name')?>">
-      </div>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<?= old('name') ?>">
+    </div>
+    
+    <div>
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" value="<?= old('email') ?>">
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password">
+    </div>
+    
+    <div>
+        <label for="password_confirmation">Repeat password</label>
+        <input type="password" name="password_confirmation">
+    </div>
+    
+    <button>Sign up</button>
+    <a href="<?= site_url("/") ?>">Cancel</a>
 
-      <div>
-         <label for="email">Email</label>
-         <input type="text" name="email" id="email" value="<?= old('email')?>">
-      </div>
+</form>
 
-      <div>
-         <label for="password">Password</label>
-         <input type="password" name="password" id="password" value="">
-      </div>
-
-      <div>
-         <label for="password_confirmation">Repeat Password</label>
-         <input type="password" name="password_confirmation" id="password_confirmation" value="">
-      </div>
-
-      <button>Sign up</button>
-      <a href="<?= site_url("/") ?>">Cancel</a>
-   </form>
-
-
-
-<? $this->endSection() ?>
+<?= $this->endSection() ?>

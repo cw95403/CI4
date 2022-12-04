@@ -1,35 +1,25 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-Login<? $this->endSection() ?>
+<?= $this->section('title') ?>Login<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Login</h1>
+<?= $this->section('content') ?>
 
-   <?php if(session()->has('errors')): ?>
-      <ul>
-         <?php foreach(session('errors') as $error): ?>
-            <li><?= $error ?></li>
-         <?php endforeach; ?>
-      </ul>
-   <?php endif; ?>
+<h1>Login</h1>
 
-   <a href="<?= site_url("/") ?>">&laquo; back to index</a>
-   
-   <?= form_open("/login/create") ?>
-      <div>
-         <label for="email">Email</label>
-         <input type="text" name="email" id="email" value="<?= old('email')?>">
-      </div>
+<?= form_open("/login/create") ?>
 
-      <div>
-         <label for="password">Password</label>
-         <input type="password" name="password">
-      </div>
+    <div>
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" value="<?= old('email') ?>">
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password">
+    </div>
+    
+    <button>Log in</button>
 
-      <button>Login</button>
-      <a href="<?= site_url("/") ?>">Cancel</a>
-   </form>
+</form>
 
-
-
-<? $this->endSection() ?>
+<?= $this->endSection() ?>

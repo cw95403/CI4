@@ -1,42 +1,59 @@
 <?= $this->extend("layouts/default") ?>
 
-<? $this->section("title") ?>TaskApp-Users<? $this->endSection() ?>
+<?= $this->section("title") ?>Users<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Users</h1>
-   
-   <a href="<?= site_url("/admin/users/new") ?>">New User</a>
+<?= $this->section("content") ?>
 
-   <?php if ($users): ?>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Administrator</th>
-                <th>Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($users as $user): ?>
-                
+    <h1>Users</h1>
+    
+    <a href="<?= site_url("/admin/users/new") ?>">New user</a>
+    
+    <?php if ($users): ?>
+    
+        <table>
+            <thead>
                 <tr>
-                    <td><a href="<?= site_url("/admin/users/show/" . $user->id) ?>"><?= esc($user->name) ?></a></td>
-                    <td><?= esc($user->email) ?></td>
-                    <td><?= $user->is_admin ? 'Yes' : 'No' ?></td>
-                    <td><?= $user->created_at ?></td>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>Active</th>
+                    <th>Administrator</th>
+                    <th>Created at</th>
                 </tr>
+            </thead>
+            <tbody>
+                <?php foreach($users as $user): ?>
+                
+                    <tr>
+                        <td>
+                            <a href="<?= site_url("/admin/users/show/" . $user->id) ?>">
+                                <?= esc($user->name) ?>
+                            </a>
+                        </td>
+                        <td><?= esc($user->email) ?></td>
+                        <td><?= $user->is_active ? 'yes' : 'no' ?></td>
+                        <td><?= $user->is_admin ? 'yes' : 'no' ?></td>
+                        <td><?= $user->created_at ?></td>
+                    </tr>
+                    
+                <?php endforeach; ?>
+            </tbody>
+        </table>
 
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <?= $pager->simpleLinks() ?>
+        
+    <?php else: ?>
+        
+        <p>No users found.</p>
+        
+    <?php endif; ?>
 
-      <?= $pager->links() ?>
+<?= $this->endSection() ?>
 
-   <?php else: ?>
-      <p>no users...</p>
 
-   <?php endif ?>
 
-<? $this->endSection() ?>
+
+
+
+
+
+

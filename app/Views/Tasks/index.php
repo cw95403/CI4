@@ -1,28 +1,42 @@
 <?= $this->extend("layouts/default") ?>
 
-<? $this->section("title") ?>TaskApp-Tasks<? $this->endSection() ?>
+<?= $this->section("title") ?>Tasks<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Tasks</h1>
+<?= $this->section("content") ?>
 
-   <a href="<?= site_url("/tasks/new/") ?>">Add Task</a>
+    <h1>Tasks</h1>
+    
+    <a href="<?= site_url("/tasks/new") ?>">New task</a>
+    
+    <?php if ($tasks): ?>
+    
+        <ul>
+            <?php foreach($tasks as $task): ?>
+            
+                <li>
+                    <a href="<?= site_url("/tasks/show/" . $task->id) ?>">
+                        <?= esc($task->description) ?>
+                    </a>
+                </li>
+                
+            <?php endforeach; ?>
+        </ul>
 
-   <?php if ($tasks): ?>
+        <?= $pager->simpleLinks() ?>
+        
+    <?php else: ?>
+        
+        <p>No tasks found.</p>
+        
+    <?php endif; ?>
 
-      <ul>
-         <?php foreach($tasks as $task): ?>
-            <li>
-               <a href="<?= site_url("/tasks/show/" . $task->id) ?>">
-                  <?= esc($task->description) ?></a>
-            </li>
-         <?php endforeach; ?>
-      </ul>
+<?= $this->endSection() ?>
 
-      <?= $pager->links() ?>
 
-   <?php else: ?>
-      <p>no tasks for user...</p>
 
-   <?php endif ?>
 
-<? $this->endSection() ?>
+
+
+
+
+

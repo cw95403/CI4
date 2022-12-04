@@ -1,26 +1,18 @@
-<?= $this->extend("layouts/default") ?>
+<?= $this->extend('layouts/default') ?>
 
-<? $this->section("title") ?>TaskApp-Tasks<? $this->endSection() ?>
+<?= $this->section('title') ?>Delete task<?= $this->endSection() ?>
 
-<? $this->section("content") ?>
-   <h1>Delete Task</h1>
+<?= $this->section('content') ?>
 
-   <p>Are you sure?</p>
+<h1>Delete task</h1>
 
-   <?php if(session()->has('errors')): ?>
-      <ul>
-         <?php foreach(session('errors') as $error): ?>
-            <li><?= $error ?></li>
-         <?php endforeach; ?>
-      </ul>
-   <?php endif; ?>
+<p>Are you sure?</p>
 
-   <a href="<?= site_url("/tasks") ?>">&laquo; back to index</a>
-   
-   <?= form_open("/tasks/delete/".$task->id) ?>
+<?= form_open("/tasks/delete/" . $task->id) ?>
 
-      <button>Yes</button>
-      <a href="<?= site_url("/tasks/show/".$task->id) ?>">Cancel</a>
-   </form>
+    <button>Yes</button>
+    <a href="<?= site_url('/tasks/show/' . $task->id) ?>">Cancel</a>
+    
+</form>
 
-<? $this->endSection() ?>
+<?= $this->endSection() ?>
