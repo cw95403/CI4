@@ -1,9 +1,10 @@
 <?= $this->extend('layouts/default') ?>
 
-<?= $this->section('title') ?>Forgot Password<?= $this->endSection() ?>
+<?= $this->section('title') ?>Forgot password<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<h1>Forgot Password</h1>
+
+<h1>Forgot password</h1>
 
 <?= form_open("/password/processforgot") ?>
 
@@ -13,6 +14,7 @@
     </div>
     
     <button>Send</button>
+
 </form>
 
 <?= $this->endSection() ?>

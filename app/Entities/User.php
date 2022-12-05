@@ -14,7 +14,7 @@ class User extends \CodeIgniter\Entity\Entity
     public function startActivation()
     {
         $token = new Token;
-
+        
         $this->token = $token->getValue();
         
         $this->activation_hash = $token->getHash();
@@ -25,5 +25,26 @@ class User extends \CodeIgniter\Entity\Entity
         $this->is_active = true;
         $this->activation_hash = null;
     }
-
+    
+    public function startPasswordReset()
+    {
+        $token = new Token;
+        
+        $this->reset_token = $token->getValue();
+        
+        $this->reset_hash = $token->getHash();
+        
+        $this->reset_expires_at = date('Y-m-d H:i:s', time() + 7200);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
