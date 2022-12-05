@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use App\Libraries\Token;
 
-class User extends \CodeIgniter\Entity\Entity
+class User extends \CodeIgniter\Entity
 {
     public function verifyPassword($password)
     {    
@@ -35,6 +35,12 @@ class User extends \CodeIgniter\Entity\Entity
         $this->reset_hash = $token->getHash();
         
         $this->reset_expires_at = date('Y-m-d H:i:s', time() + 7200);
+    }
+    
+    public function completePasswordReset()
+    {
+        $this->reset_hash = null;
+        $this->reset_expires_at = null;
     }
 }
 
